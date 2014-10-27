@@ -1,0 +1,3 @@
+#!/bin/bash
+
+raspivid -o - -t 0 -n --rotation 270 -w 600 -h 400 -fps 30 | cvlc -vvv stream:///dev/stdin --noaudio --no-sout-audio --sout '#standard{access=http,mux=ts,dst=:8082}' :demux=h264
